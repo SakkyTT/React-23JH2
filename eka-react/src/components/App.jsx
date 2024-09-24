@@ -4,6 +4,7 @@ import EkaComponent from './EkaComponent';
 import ClassComponent from './ClassComponent';
 import Counter from './Counter';
 import Product from './Product/Product';
+import { PRODUCTS } from '../data/data'; // dummy data
 
 function App() {
 
@@ -24,16 +25,25 @@ function App() {
         >
           Learn React
         </a>
-        <Counter/>
+        <Counter />
         {/* <EkaComponent/>
         <ClassComponent/>         */}
         <section>
           <h2>Tuotteet</h2>
           <ul>
             {/* 1. vaihtoehto props, properties */}
-              <Product img="path" title="Tuotteen nimi" description="Tuote kuvaus"/>
-              <Product/>
-              <Product/>
+            <Product
+              img={PRODUCTS[0].img}
+              title={PRODUCTS[0].title}
+              description={PRODUCTS[0].description} />
+            <Product
+              img={PRODUCTS[1].img}
+              title={PRODUCTS[1].title}
+              description={PRODUCTS[1].description} />
+            <Product
+              img={PRODUCTS[2].img}
+              title={PRODUCTS[2].title}
+              description={PRODUCTS[2].description} />
           </ul>
         </section>
       </header>

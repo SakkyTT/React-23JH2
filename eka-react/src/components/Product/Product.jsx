@@ -7,6 +7,7 @@
 //         </li>
 //     );
 // }
+// deconstructuring
 export default function Product({img, title, description}) {
     // shift+alt+f
     return (
