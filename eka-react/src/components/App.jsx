@@ -1,10 +1,14 @@
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
 import EkaComponent from './EkaComponent';
 import ClassComponent from './ClassComponent';
 import Counter from './Counter';
+import Product from './Product/Product';
 
 function App() {
+
+  // Täällä eläisi Products state
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,8 +25,17 @@ function App() {
           Learn React
         </a>
         <Counter/>
-        <EkaComponent/>
-        <ClassComponent/>        
+        {/* <EkaComponent/>
+        <ClassComponent/>         */}
+        <section>
+          <h2>Tuotteet</h2>
+          <ul>
+            {/* 1. vaihtoehto props, properties */}
+              <Product img="path" title="Tuotteen nimi" description="Tuote kuvaus"/>
+              <Product/>
+              <Product/>
+          </ul>
+        </section>
       </header>
     </div>
   );

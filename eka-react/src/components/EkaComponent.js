@@ -12,7 +12,7 @@
 //      PascalCase esim: NewComponent.js
 //  2. Palauttaa jotakin, jonka voi renderöidä UI:n
 // Componenttejä on kahta erilaista
-//  1. functional component, tehty funktiona
+//  1. functional component, tehty funktional
 //  2. class component, tehty luokkana/objektina (vanha)
 
 // Functional component
@@ -44,7 +44,7 @@ export default EkaComponent; // Jotta voidaan käyttää muualla
 // React huolehtii state:n olemassa olosta ja sen muutokset täytyy
 // suorittaa React:n kautta.
 
-// 5. Hooks 
+// 5. Hooks
 // Eli state päivitykset (functional components)
 // useState
 // useEffect
