@@ -1,9 +1,9 @@
-import logo from '../logo.svg';
 import './App.css';
 import EkaComponent from './EkaComponent';
 import ClassComponent from './ClassComponent';
 import Counter from './Counter';
 import Product from './Product/Product';
+import HeaderTest from './HeaderTest/HeaderTest';
 import { PRODUCTS } from '../data/data'; // dummy data
 
 function App() {
@@ -13,18 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit testi <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <HeaderTest/>
         <Counter />
         {/* <EkaComponent/>
         <ClassComponent/>         */}
@@ -36,14 +25,13 @@ function App() {
               img={PRODUCTS[0].img}
               title={PRODUCTS[0].title}
               description={PRODUCTS[0].description} />
+              {/* Voi käyttää destructure ... syntaksia, jos
+                  lähde datan avaimet ovat samat kuin componentin
+                  avaimet. */}
             <Product
-              img={PRODUCTS[1].img}
-              title={PRODUCTS[1].title}
-              description={PRODUCTS[1].description} />
+              {...PRODUCTS[1]} />
             <Product
-              img={PRODUCTS[2].img}
-              title={PRODUCTS[2].title}
-              description={PRODUCTS[2].description} />
+              {...PRODUCTS[2]} />
           </ul>
         </section>
       </header>

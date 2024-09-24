@@ -8,11 +8,17 @@
 //     );
 // }
 // deconstructuring
+
+// Komponentti kohtaiset tyylittelyt
+// styles objektista jaetaan luokkia komponentin elementeille
+// esim className={styles.productImage}
+import styles from './Product.module.css';
+
 export default function Product({img, title, description}) {
     // shift+alt+f
     return (
-        <li>
-            <img src={img} alt={title} />
+        <li className={styles.product}>
+            <img className={styles.productImage} src={img} alt={title} />
             <h3>{title}</h3>
             <p>{description}</p>
         </li>
