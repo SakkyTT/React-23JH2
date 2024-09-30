@@ -13,10 +13,12 @@ function App() {
 
   // Täällä eläisi Products state
 
+  console.log("APP EXECUTING");
+
   function handleSelectApp(selectedButton) {
-    console.log(`Category clicked! - ${selectedButton}`);
     //selectedCategoryWrong = selectedButton; // Ei UI päivitystä
     setSelectedCategory(selectedButton);
+    console.log(`Category clicked! - ${selectedCategory.title}`);
   }
 
   // Tämän muokkaus ei suorita käyttöliittymän päivitystä
@@ -26,7 +28,7 @@ function App() {
   // useState pitää luoda komponentin juureen
   // useState() palauttaa taulukon, jossa on:
   //     state muuttuja, funktio, päivittää state     (oletus arvo)
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
 
   // Kuvitteellisesti haettu tietokannasta tähän state:iin
   const [categories, setCategories] = useState(CATEGORIES);
@@ -75,7 +77,7 @@ function App() {
               // Tässä koodi, jonka map toteuttaa joka kierroksella              
                 <TabButton key={index} onSelect={()=>{handleSelectApp(category)}}>
                   {category.title}
-                </TabButton>              
+                </TabButton>
             ))}
           </menu>
           {/* Tähän päivittyy uusi sisältö */}

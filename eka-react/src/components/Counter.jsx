@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import CounterButton from './CounterButton';
 
 const Counter = () => {
 
@@ -36,8 +37,10 @@ const Counter = () => {
         <div>
             <h3>Count: {count}</h3>
             {/* Harjoitus, käytetään uutta CounterButton komponenttia */}
-            <button onClick={increment}>++</button>
-            <button onClick={decrement}>--</button>
+            {/* <button onClick={increment}>++</button>
+            <button onClick={decrement}>--</button> */}
+            <CounterButton onSelect={increment}>+++</CounterButton>
+            <CounterButton onSelect={decrement}>---</CounterButton>
         </div>
     );
 }
