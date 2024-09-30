@@ -7,6 +7,7 @@ import HeaderTest from './HeaderTest/HeaderTest';
 import TabButton from './TabButton/TabButton';
 import { PRODUCTS } from '../data/data'; // dummy data
 import { useState } from 'react';
+import { CATEGORIES } from '../data/categories';
 
 function App() {
 
@@ -25,7 +26,10 @@ function App() {
   // useState pitää luoda komponentin juureen
   // useState() palauttaa taulukon, jossa on:
   //     state muuttuja, funktio, päivittää state     (oletus arvo)
-  const [selectedCategory, setSelectedCategory] = useState("Valitse kategoria");
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  // Kuvitteellisesti haettu tietokannasta tähän state:iin
+  const [categories, setCategories] = useState(CATEGORIES);
 
   return (
     <div className="App">
@@ -61,13 +65,26 @@ function App() {
                 Tämän vuoksi state ei elä napin sisällä, vaan sinne lähetetään
                 viittaus funktioon, joka suoritetaan korkeammalla
                 tasolla. */}
-            <TabButton onSelect={() => {handleSelectApp('Kategoria 1')}}>Kategoria 1</TabButton>
+            {/* <TabButton onSelect={() => {handleSelectApp('Kategoria 1')}}>Kategoria 1</TabButton>
             <TabButton onSelect={() => {handleSelectApp('Kategoria 2')}}>Kategoria 2</TabButton>
             <TabButton onSelect={() => {handleSelectApp('Kategoria 3')}}>Kategoria 3</TabButton>
-            <TabButton onSelect={() => {handleSelectApp('Kategoria 4')}}>Kategoria 4</TabButton>
+            <TabButton onSelect={() => {handleSelectApp('Kategoria 4')}}>Kategoria 4</TabButton> */}
+            {/* Generoidaan napit "haetun" datan perusteella */}
+            {/* taulukon map()-funktiolla leivotaan data toiseen muotoon */}
+            {categories.map((category, index)=>(
+              // Tässä koodi, jonka map toteuttaa joka kierroksella              
+                <TabButton key={index} onSelect={()=>{handleSelectApp(category)}}>
+                  {category.title}
+                </TabButton>              
+            ))}
           </menu>
           {/* Tähän päivittyy uusi sisältö */}
-          {selectedCategory}
+          {selectedCategory ? <div>
+            <h3>{selectedCategory.title}</h3>
+            <p>{selectedCategory.description}</p>
+          </div>
+          : <p>Please select a category!</p>
+          }
         </section>
       </header>
     </div>

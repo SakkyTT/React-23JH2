@@ -35,6 +35,7 @@ const Counter = () => {
     return (
         <div>
             <h3>Count: {count}</h3>
+            {/* Harjoitus, käytetään uutta CounterButton komponenttia */}
             <button onClick={increment}>++</button>
             <button onClick={decrement}>--</button>
         </div>

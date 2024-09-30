@@ -1,3 +1,4 @@
+// JSON data, esim tietokannasta
 export const CATEGORIES = [
     {
       title: 'Kategoria 1',
