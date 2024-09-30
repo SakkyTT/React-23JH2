@@ -6,14 +6,26 @@ import Product from './Product/Product';
 import HeaderTest from './HeaderTest/HeaderTest';
 import TabButton from './TabButton/TabButton';
 import { PRODUCTS } from '../data/data'; // dummy data
+import { useState } from 'react';
 
 function App() {
 
   // Täällä eläisi Products state
 
-  function handleSelect() {
-    console.log("Category clicked! - selected");
+  function handleSelectApp(selectedButton) {
+    console.log(`Category clicked! - ${selectedButton}`);
+    //selectedCategoryWrong = selectedButton; // Ei UI päivitystä
+    setSelectedCategory(selectedButton);
   }
+
+  // Tämän muokkaus ei suorita käyttöliittymän päivitystä
+  //let selectedCategoryWrong = "Katekoria 1";
+
+  // Jotta käyttöliittymä päivittyy, tarvitaan komponenttiin state
+  // useState pitää luoda komponentin juureen
+  // useState() palauttaa taulukon, jossa on:
+  //     state muuttuja, funktio, päivittää state     (oletus arvo)
+  const [selectedCategory, setSelectedCategory] = useState("Valitse kategoria");
 
   return (
     <div className="App">
@@ -44,12 +56,18 @@ function App() {
           <menu>
             {/* 2. tapa: component composition */}
             {/* kaikkea lapsi dataa ei tarvitse pyörittää propsien kautta */}
-            <TabButton onSelect={handleSelect}>Kategoria 1</TabButton>
-            <TabButton onSelect={handleSelect}>Kategoria 2</TabButton>
-            <TabButton onSelect={handleSelect}>Kategoria 3</TabButton>
-            <TabButton onSelect={handleSelect}>Kategoria 4</TabButton>
+            {/* Nappien on tarkoitus päivittää jotakin state arvoa
+                ja tämä state päivittää komponenttia napin ulkopuollella.
+                Tämän vuoksi state ei elä napin sisällä, vaan sinne lähetetään
+                viittaus funktioon, joka suoritetaan korkeammalla
+                tasolla. */}
+            <TabButton onSelect={() => {handleSelectApp('Kategoria 1')}}>Kategoria 1</TabButton>
+            <TabButton onSelect={() => {handleSelectApp('Kategoria 2')}}>Kategoria 2</TabButton>
+            <TabButton onSelect={() => {handleSelectApp('Kategoria 3')}}>Kategoria 3</TabButton>
+            <TabButton onSelect={() => {handleSelectApp('Kategoria 4')}}>Kategoria 4</TabButton>
           </menu>
           {/* Tähän päivittyy uusi sisältö */}
+          {selectedCategory}
         </section>
       </header>
     </div>
