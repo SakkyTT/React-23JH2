@@ -10,7 +10,8 @@ function AppUseEffect() {
 
   useEffect(() => {
     // tiedonhaku
-    fetch('http://localhost:9000/react-apis/data.php')
+    // fetch('http://localhost:9000/react-apis/data.php')
+    fetch('http://localhost:3001/')
       .then((response) => {
         if (!response.ok) {
           // Joko heitetään virhe
