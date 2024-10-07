@@ -8,6 +8,47 @@ function AppUseEffect() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
+  const [formData, setFormData] = useState({
+    userId: '',
+    message: ''
+  });
+
+  const handleChange = (event) => {
+    // console.log(formData);
+    // console.log(event.target);
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+
+  const handleSubmit = async (e) => {
+    // estetään eventin oletus käyttäytyminen
+    // eli sivun uudelleen lataus
+    e.preventDefault();
+
+    // Yritetään tallennus
+    try{
+      // domain: http://localhost:3001/ esim google.com
+      // route: /jokin/route/talla/tavalla  esim /search
+      const response = await fetch('http://localhost:3001/api/messages/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log('Response from server: ', result);
+
+    }catch(error){
+      console.log('Error sending data: ', error);
+    }
+
+  };
+
   useEffect(() => {
     // tiedonhaku
     // fetch('http://localhost:9000/react-apis/data.php')
@@ -43,7 +84,7 @@ function AppUseEffect() {
             <h2>{data.message}</h2>
             <h3>Users:</h3>
             <ul>
-              {data.users.map((user)=>(
+              {data.users.map((user) => (
                 <li key={user.id}>{user.name}</li>
               )
               )}
@@ -54,6 +95,26 @@ function AppUseEffect() {
         )
         }
 
+        <section>
+          <h2>Post test</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="userId"
+              placeholder='UserId'
+              value={formData.userId}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="message"
+              placeholder='Message'
+              value={formData.message}
+              onChange={handleChange}
+            />
+            <button type="submit">Send</button>
+          </form>
+        </section>
       </header>
     </div>
   );
