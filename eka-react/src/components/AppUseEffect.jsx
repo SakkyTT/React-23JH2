@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import HeaderTest from './HeaderTest/HeaderTest';
 
+// Root componentti
 
 function AppUseEffect() {
 

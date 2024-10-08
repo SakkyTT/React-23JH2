@@ -9,6 +9,8 @@ import { PRODUCTS } from '../data/data'; // dummy data
 import { useState } from 'react';
 import { CATEGORIES } from '../data/categories';
 
+// Root componentti
+
 function App() {
 
   // Täällä eläisi Products state
